@@ -14,3 +14,13 @@ OpenCV-OCR-TextExtraction/
 │
 ├── requirements.txt                     
 └── README.md
+
+[Layered Architecture or Modular Architecture]
+
+config.py → configuration layer
+
+prompts/ → constants / template layer
+
+prescription_text_extractor.py → core logic / “model” layer
+
+main.py → orchestration layer / runner
