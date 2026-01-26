@@ -23,4 +23,6 @@ prompts/ → constants / template layer
 
 prescription_text_extractor.py → core logic / “model” layer
 
+prescription_chatbot_console.py → console level chatbot
+
 main.py → orchestration layer / runner
