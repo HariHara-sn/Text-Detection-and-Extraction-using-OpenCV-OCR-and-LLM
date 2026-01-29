@@ -1,0 +1,2 @@
+# Prescription-Analyzer Frontend
+This directory contains the frontend code for the Prescription-Analyzer application. The frontend is built using React and provides a user-friendly interface for interacting with the backend services.

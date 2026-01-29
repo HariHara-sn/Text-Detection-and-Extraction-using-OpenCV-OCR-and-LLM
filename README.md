@@ -25,7 +25,7 @@ Traditional OCR systems fail on this data.
 ### 1️⃣ Install Dependencies
 
 ```bash
-pip install google-generativeai pillow python-dotenv
+pip install -r requirements.txt
 ```
 
 ### 2️⃣ Set API Key
