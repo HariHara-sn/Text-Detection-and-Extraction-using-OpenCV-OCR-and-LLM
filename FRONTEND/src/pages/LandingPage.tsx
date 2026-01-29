@@ -34,7 +34,7 @@ const LandingPage = () => {
     {
       icon: Download,
       title: "Export Data",
-      description: "Download structured JSON for your records or sharing"
+      description: "Download structured data for your records or sharing"
     }
   ];
 

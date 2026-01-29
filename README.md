@@ -4,7 +4,25 @@
 
 This project aims to build a **medical prescription understanding system**, starting with a **robust perception layer** and evolving into a **safe, explainable, and interactive chatbot**.
 
-The current version focuses **only** on **accurate text extraction** from handwritten doctor prescriptions using a **multimodal LLM (Gemini 2.5 Flash)**.
+The current version focuses **only** on **accurate text extraction** from handwritten doctor prescriptions using a **multimodal LLM (Gemini 1.5 Flash)**.
+
+---
+
+## 🛠️ Tech Stack
+
+### **Backend**
+- **Framework:** FastAPI (Python)
+- **AI Model:** Google Gemini 1.5 Flash (Multimodal LLM)
+- **Server:** Uvicorn (ASGI)
+- **Validation:** Pydantic
+- **Image Processing:** Pillow (PIL)
+- **Architecture:** Modular MVC-style structure (Config, Controllers, Models, Routes, Utils)
+
+### **Frontend**
+- **Framework:** React with Vite
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** Shadcn UI & Lucide React
 
 ---
 
@@ -39,7 +57,7 @@ GOOGLE_API_KEY = your_api_key
 ### 3️⃣ Run the Script
 
 ```bash
-python main.py
+python -m uvicorn main:app --reload
 ```
 
 ---

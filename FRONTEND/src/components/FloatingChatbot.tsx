@@ -60,7 +60,7 @@ const FloatingChatbot = ({ prescription, selectedMedicine }: FloatingChatbotProp
           // Remove pulse after a few seconds
           setTimeout(() => setShowPulse(false), 3000);
         }, 600);
-      }, 5000);
+      }, 3000);
       
       return () => clearTimeout(timer);
     }

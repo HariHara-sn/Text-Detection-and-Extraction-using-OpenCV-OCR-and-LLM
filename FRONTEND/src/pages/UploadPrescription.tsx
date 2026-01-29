@@ -7,8 +7,10 @@ import { Progress } from "@/components/ui/progress";
 import FileUploadZone from "@/components/FileUploadZone";
 import MedicineTable from "@/components/MedicineTable";
 import FloatingChatbot from "@/components/FloatingChatbot";
+import ExportActions from "@/components/ExportActions";
 import { performClientOCR, cancelOCR, uploadPrescriptionToBackend } from "@/lib/ocr-service";
 import type { UploadedFile, OCRProgress, Prescription } from "@/types/prescription";
+import { useRef } from "react";
 
 const UploadPrescription = () => {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ const UploadPrescription = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const handleFileAccepted = useCallback((file: UploadedFile) => {
     setPreviewUrl(file.preview);
@@ -172,42 +175,48 @@ const UploadPrescription = () => {
               Extracted Medicine Details
             </h2>
 
-            {/* Two Column Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Left: Original Prescription */}
-              <div className="bg-card rounded-xl p-6 shadow-card-elevated">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Original Prescription
-                </h3>
-                
-                {previewUrl && (
-                  <div className="rounded-lg overflow-hidden bg-muted mb-4">
-                    <img 
-                      src={previewUrl} 
-                      alt="Uploaded prescription" 
-                      className="w-full max-h-[350px] object-contain"
-                    />
-                  </div>
-                )}
-                
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between py-2 border-b border-border">
-                    <span className="text-muted-foreground">Date:</span>
-                    <span className="font-medium text-foreground">{prescription.date}</span>
-                  </div>
-                  <div className="pt-2">
-                    <span className="text-muted-foreground">Notes:</span>
-                    <p className="text-foreground mt-1">{prescription.notes}</p>
+            {/* Export & Share Actions */}
+            <ExportActions contentRef={resultsRef} prescriptionData={prescription} />
+
+            {/* Content to capture */}
+            <div ref={resultsRef} className="p-4 bg-background">
+              {/* Two Column Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Left: Original Prescription */}
+                <div className="bg-card rounded-xl p-6 shadow-card-elevated h-full">
+                  <h3 className="text-lg font-semibold text-foreground mb-4">
+                    Prescription
+                  </h3>
+                  
+                  {previewUrl && (
+                    <div className="rounded-lg overflow-hidden bg-muted mb-4">
+                      <img 
+                        src={previewUrl} 
+                        alt="Uploaded prescription" 
+                        className="w-full max-h-[350px] object-contain"
+                      />
+                    </div>
+                  )}
+                  
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between py-2 border-b border-border">
+                      <span className="text-muted-foreground">Date:</span>
+                      <span className="font-medium text-foreground">{prescription.date}</span>
+                    </div>
+                    <div className="pt-2">
+                      <span className="text-muted-foreground">Notes:</span>
+                      <p className="text-foreground mt-1">{prescription.notes}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Right: Medicine Table */}
-              <MedicineTable
-                medicines={prescription.medicines}
-                selectedMedicine={selectedMedicine}
-                onSelectMedicine={handleSelectMedicine}
-              />
+                {/* Right: Medicine Table */}
+                <MedicineTable
+                  medicines={prescription.medicines}
+                  selectedMedicine={selectedMedicine}
+                  onSelectMedicine={handleSelectMedicine}
+                />
+              </div>
             </div>
 
             {/* Upload Another Button */}
