@@ -1,4 +1,4 @@
-# 🏥 Medical Prescription Extraction System
+# Medical Prescription Extraction System
 
 ## Overview
 
@@ -47,15 +47,15 @@ Traditional OCR systems struggle significantly with this kind of data.
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
-### 1️⃣ Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Set the API Key
+### Set the API Key
 
 Create a `.env` file in the project root:
 
@@ -63,7 +63,7 @@ Create a `.env` file in the project root:
 GOOGLE_API_KEY=your_api_key
 ```
 
-### 3️⃣ Run the Server
+### Run the Server
 
 ```bash
 python -m uvicorn main:app --reload
@@ -71,7 +71,7 @@ python -m uvicorn main:app --reload
 
 ---
 
-## 📤 Example Output
+## Example Output
 
 ```json
 {
@@ -127,14 +127,13 @@ Always consult a qualified healthcare professional.
 ---
 
 ## 🤝 Contributing
-
 Contributions are welcome!
-
-1. Fork the repository
-2. Create a new branch
-3. Commit your changes
-4. Open a Pull Request
-
+```
+1. Fork it
+2. Create new branch
+3. Commit changes
+4. Open Pull Request
+```
 ---
 
 ## 👤 Author
