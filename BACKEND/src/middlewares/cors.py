@@ -6,6 +6,7 @@ def setup_cors(app: FastAPI):
         CORSMiddleware,
         allow_origins=[
             "https://prescription-frontend-mu.vercel.app",
+            "https://prescribeai.vercel.app/",
             "http://localhost:5173",  # Local development
             "*" # Keep for now to avoid blocking
         ],
