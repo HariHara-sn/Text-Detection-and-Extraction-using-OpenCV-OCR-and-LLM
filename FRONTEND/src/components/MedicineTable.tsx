@@ -81,8 +81,7 @@ const MedicineTable = ({ medicines, selectedMedicine, onSelectMedicine }: Medici
         <div 
           ref={scrollRef}
           className="w-full overflow-x-auto scrollbar-hide pb-2"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <div className="min-w-[900px]">
             {/* Table Header */}
             <div className="grid grid-cols-10 gap-4 py-3 border-b border-border text-sm font-medium text-muted-foreground">
