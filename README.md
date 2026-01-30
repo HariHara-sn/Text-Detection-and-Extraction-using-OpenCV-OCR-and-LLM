@@ -32,6 +32,10 @@ The system is developed incrementally across clearly versioned milestones:
 * **Language:** TypeScript
 * **Styling:** Tailwind CSS
 
+### Infra
+
+* **Backend:** Render
+* **Frontend:** Vercel
 ---
 
 ## 🎯 Problem Statement
