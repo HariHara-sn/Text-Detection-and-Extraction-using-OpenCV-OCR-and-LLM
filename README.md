@@ -1,60 +1,69 @@
-# 🏥 Medical Prescription Extraction System
+# Medical Prescription Extraction System
 
 ## Overview
 
-This project aims to build a **medical prescription understanding system**, starting with a **robust perception layer** and evolving into a **safe, explainable, and interactive chatbot**.
+This project builds a **medical prescription understanding system**, starting with a robust **perception layer** and progressively evolving into a **safe, explainable, and interactive chatbot**.
 
-The current version focuses **only** on **accurate text extraction** from handwritten doctor prescriptions using a **multimodal LLM (Gemini 1.5 Flash)**.
+The system is developed incrementally across clearly versioned milestones:
+
+* **Version 1.0.0** – [Simple text extraction](https://github.com/HariHara-sn/Text-Detection-and-Extraction-using-OpenCV-OCR-and-LLM/tree/Sample-Extraction)
+* **Version 2.0.0** – [Medical prescription extraction](https://github.com/HariHara-sn/Text-Detection-and-Extraction-using-OpenCV-OCR-and-LLM/tree/medical-prescription-extraction)
+* **Version 3.0.0** – [Medical prescription chatbot](https://github.com/HariHara-sn/Text-Detection-and-Extraction-using-OpenCV-OCR-and-LLM/tree/medical-prescription-chatbot)
+* **Version 4.0.0** – [Production-ready full-stack system](https://github.com/HariHara-sn/Text-Detection-and-Extraction-using-OpenCV-OCR-and-LLM/tree/medical-prescription-production)
+
+  * Fully functional frontend and backend
 
 ---
 
 ## 🛠️ Tech Stack
 
-### **Backend**
-- **Framework:** FastAPI (Python)
-- **AI Model:** Google Gemini 1.5 Flash (Multimodal LLM)
-- **Server:** Uvicorn (ASGI)
-- **Validation:** Pydantic
-- **Image Processing:** Pillow (PIL)
-- **Architecture:** Modular MVC-style structure (Config, Controllers, Models, Routes, Utils)
+### Backend
 
-### **Frontend**
-- **Framework:** React with Vite
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Components:** Shadcn UI & Lucide React
+* **Framework:** FastAPI (Python)
+* **AI Model:** Google Gemini 2.5 Flash (Multimodal LLM)
+* **Server:** Uvicorn (ASGI)
+* **Validation:** Pydantic
+* **Image Processing:** Pillow (PIL)
+* **Architecture:** Modular MVC-style structure (Config, Controllers, Models, Routes, Utils)
+
+### Frontend
+
+* **Framework:** React (Vite)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
 
 ---
 
 ## 🎯 Problem Statement
 
-Doctor prescriptions are:
+Doctor prescriptions are often:
 
 * Handwritten
 * Highly ambiguous
 * Filled with abbreviations and shorthand
-* Often unreadable by patients
+* Difficult or impossible for patients to read
 
-Traditional OCR systems fail on this data.
+Traditional OCR systems struggle significantly with this kind of data.
+
 ---
 
 ## How to Run
 
-### 1️⃣ Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Set API Key
+### Set the API Key
 
-Create a `.env` file:
+Create a `.env` file in the project root:
 
 ```env
-GOOGLE_API_KEY = your_api_key
+GOOGLE_API_KEY=your_api_key
 ```
 
-### 3️⃣ Run the Script
+### Run the Server
 
 ```bash
 python -m uvicorn main:app --reload
@@ -62,9 +71,9 @@ python -m uvicorn main:app --reload
 
 ---
 
-## 📤 Example Output
+## Example Output
 
-```
+```json
 {
   "medications": [
     {
@@ -84,11 +93,11 @@ python -m uvicorn main:app --reload
   ],
   "notes": "Take Amoxicillin with food to avoid stomach upset."
 }
-
 ```
 
-> Output is **plain text only**.
-> No medical interpretation is applied at this stage.
+Sample outputs and proof-of-concept images can be found in the **POC-IMAGES** folder.
+
+> **Note:** No medical interpretation or decision-making is applied at this stage.
 
 ---
 
@@ -96,21 +105,22 @@ python -m uvicorn main:app --reload
 
 This project does **not** aim to compete with OCR tools.
 
-The goal is to:
+Instead, it focuses on:
 
-* Handle **medical ambiguity**
-* Make **assumptions explicit**
-* Enable **safe downstream reasoning**
-* Integrate into **clinical workflows**
+* Handling **medical ambiguity**
+* Making **assumptions explicit**
+* Enabling **safe downstream reasoning**
+* Supporting integration into **clinical or pharmacy workflows**
 
-Text extraction is only the **first building block**.
+Text extraction is only the **first building block** of a larger intelligent system.
 
 ---
 
 ## ⚠️ Disclaimer
 
-This project is for **educational and research purposes only**.
-It is **not a substitute** for professional medical advice.
+This project is intended for **educational and research purposes only**.
+
+It is **not a substitute** for professional medical advice, diagnosis, or treatment.
 
 Always consult a qualified healthcare professional.
 
@@ -124,9 +134,9 @@ Contributions are welcome!
 3. Commit changes
 4. Open Pull Request
 ```
+---
 
 ## 👤 Author
 
-**HARI HARA SUDHAN S** *B.TECH IT*
-
-
+**Hari Hara Sudhan S**
+*B.Tech – Information Technology*

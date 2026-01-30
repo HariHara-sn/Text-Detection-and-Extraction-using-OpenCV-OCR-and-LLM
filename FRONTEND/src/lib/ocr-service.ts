@@ -5,7 +5,7 @@
 import Tesseract, { createWorker } from "tesseract.js";
 import type { OCRProgress, OCRResult, OCRConfig, Prescription } from "@/types/prescription";
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = "https://prescription-model.onrender.com";
 
 let worker: Tesseract.Worker | null = null;
 let abortController: AbortController | null = null;
