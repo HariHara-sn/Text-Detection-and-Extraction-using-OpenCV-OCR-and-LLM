@@ -97,6 +97,8 @@ python -m uvicorn main:app --reload
 
 Sample outputs and proof-of-concept images can be found in the **POC-IMAGES** folder.
 
+![Output Image](POC-IMAGES/output_2.png)
+
 > **Note:** No medical interpretation or decision-making is applied at this stage.
 
 ---
