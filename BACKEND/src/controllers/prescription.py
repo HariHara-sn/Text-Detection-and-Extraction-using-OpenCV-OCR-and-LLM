@@ -18,13 +18,22 @@ class PrescriptionExtractor:
         self.model = genai.GenerativeModel(Config.GEMINI_MODEL_NAME)
 
     def extract(self, image: Image.Image):
-        logger.info("Sending prompt to Gemini...")
-        response = self.model.generate_content(
-            [PRESCRIPTION_EXTRACTOR_PROMPT, image],
-            generation_config={"temperature": 0.0, "max_output_tokens": 512}
-        )
-        logger.info("Extraction complete")
-        return response.text.strip()
+        try:
+            logger.info(f"Sending request to Gemini model: {Config.GEMINI_MODEL_NAME}")
+            response = self.model.generate_content(
+                [PRESCRIPTION_EXTRACTOR_PROMPT, image],
+                generation_config={"temperature": 0.0, "max_output_tokens": 1024}
+            )
+            
+            if not response.text:
+                logger.error("Empty response from Gemini. Possible safety filter block.")
+                return json.dumps({"error": "No text extracted. The image might be unclear or blocked by safety filters."})
+                
+            logger.info("Extraction complete")
+            return response.text.strip()
+        except Exception as e:
+            logger.error(f"Error in Gemini extraction: {str(e)}")
+            raise e
 
 class PrescriptionChatbot:
     def __init__(self, extracted_json: dict):
