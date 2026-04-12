@@ -24,7 +24,7 @@ The system is developed incrementally across clearly versioned milestones:
 * **Server:** Uvicorn (ASGI)
 * **Validation:** Pydantic
 * **Image Processing:** Pillow (PIL)
-* **Architecture:** Modular MVC-style structure (Config, Controllers, Models, Routes, Utils)
+* **Architecture:** Modular MVC-style structure (Config, Controllers, MiddleWares, Models, Routes, Utils)
 
 ### Frontend
 
@@ -72,7 +72,18 @@ GOOGLE_API_KEY=your_api_key
 ```bash
 python -m uvicorn main:app --reload
 ```
+### Frontend: 
+```bash
+cd Frontend
+npm run dev
+```
 
+### Replace with your backend [local or Deployed]
+```bash
+path : FRONTEND\src\lib\ocr-service.ts
+const BACKEND_URL = "https://prescription-model.onrender.com";
+const BACKEND_URL = "http://127.0.0.1:8000";
+```
 ---
 
 ## Example Output

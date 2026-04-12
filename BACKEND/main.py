@@ -16,6 +16,7 @@ app.include_router(prescription_router)
 
 @app.get("/")
 async def root():
+    print("started hari")
     return {"message": "Prescription OCR & Chatbot API is running"}
 
 if __name__ == "__main__":

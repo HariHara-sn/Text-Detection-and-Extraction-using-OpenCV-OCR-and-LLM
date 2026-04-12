@@ -15,8 +15,10 @@ async def upload_prescription(file: UploadFile = File(...)):
     
     try:
         content = await file.read()
+        print("1. Image uploaded", flush=True)
         image = Image.open(io.BytesIO(content))
         
+        print("2. Processing.....", flush=True)
         extracted_text = extractor.extract(image)
         
         try:

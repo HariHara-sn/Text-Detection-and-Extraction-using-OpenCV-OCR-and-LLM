@@ -11,6 +11,6 @@ class Config:
     @staticmethod
     def validate():
         if not Config.API_KEY:
-            print("❌ Warning: GOOGLE_API_KEY is missing in .env file.")
+            print("Warning: GOOGLE_API_KEY is missing in .env file.")
         else:
-            print(f"✅ API Configured with model: {Config.GEMINI_MODEL_NAME}")
+            print(f"API Configured with model: {Config.GEMINI_MODEL_NAME}")

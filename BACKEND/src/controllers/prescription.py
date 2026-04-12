@@ -9,6 +9,10 @@ from prompts.chatbot_system_prompt import CHATBOT_SYSTEM_PROMPT
 
 logger = logging.getLogger("PrescriptionController")
 logger.setLevel(logging.DEBUG)
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    logger.addHandler(handler)
 
 class PrescriptionExtractor:
     def __init__(self):
@@ -50,14 +54,17 @@ class PrescriptionChatbot:
     def chat(self, user_query: str, history=None) -> tuple[str, list]:
         logger.info("Generating chatbot response")
         history = history or []
+        print(f"\n4. History:\n{history}", flush=True)
         chat = self.model.start_chat(history=history)
         
         context_query = user_query
         if not history:
             context_query = f"Here is the prescription data in JSON format: {json.dumps(self.prescription_json)}. \n\nUser Question: {user_query}"
-
+            logger.info(f"Context query: {context_query}")
+        
+        print(f"\n3. Context Query:\n{context_query}\n", flush=True)
         response = chat.send_message(
-            context_query,
+            context_query,            
             generation_config={
                 "temperature": 0.2,
                 "max_output_tokens": 500
